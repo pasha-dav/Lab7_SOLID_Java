@@ -50,5 +50,21 @@ public class Main {
         } catch (Exception e) {
             System.out.println("[ПОВІДОМЛЕННЯ LSP] Збій через порушення контракту нащадком: " + e.getMessage());
         }
+
+        System.out.println("\n=== ЗАВДАННЯ 4 (ISP): Тестування рольових інтерфейсів ===");
+        DatabaseService dbService = new DatabaseService();
+        dbService.saveData("Дані для бази від студента Б");
+        dbService.log("Лог успішно записано через ISP-інтерфейс");
+
+        PdfReportService reportService = new PdfReportService();
+        byte[] pdfReport = reportService.exportReport();
+        System.out.println("PDF-звіт успішно згенеровано. Багаж байтів: " + pdfReport.length);
+
+        System.out.println("\n=== ЗАВДАННЯ 5 (DIP): Тестування бізнес-процесу з CI ===");
+        DataRepository repository = new SqlDataRepository();
+        BusinessProcessor processor = new BusinessProcessor(repository);
+        
+        processor.process("Важливі бізнес-дані 7 варіанта");
+        System.out.println("Бізнес-процес успішно прогнаний через DIP та Constructor Injection!");
     }
 }

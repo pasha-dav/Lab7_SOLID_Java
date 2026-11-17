@@ -1,7 +1,6 @@
-// Можна залишити без public перед інтерфейсами всередині одного файлу
 interface DataWriter {
     void saveData(String data);
-}
+} 
 
 interface AppLogger {
     void log(String message);
